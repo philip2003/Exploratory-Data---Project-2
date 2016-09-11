@@ -1,1 +1,24 @@
+NEI <- readRDS("~/Desktop/EPAData/summarySCC_PM25.rds")
+SCC <- readRDS("~/Desktop/EPAData/Source_Classification_Code.rds")
 
+normalize <- function(x) {(x-min(x)) / (max(x)-min(x))}
+
+baltmore.emissions <- NEI[(NEI$fips=="24510") & (NEI$type=="ON-ROAD"),]
+baltmore.emissions.aggr <- aggregate(Emissions ~ year, data=baltmore.emissions, FUN=sum)
+
+losAng.emissions <- NEI[(NEI$fips=="06037") & (NEI$type=="ON-ROAD"),]
+losAng.emissions.aggr <- aggregate(Emissions ~ year, data=losAng.emissions, FUN=sum)
+
+baltmore.emissions.aggr$County <- "Baltimore City, MD"
+losAng.emissions.aggr$County <- "Los Angeles County, CA"
+both.emissions <- rbind(baltmore.emissions.aggr, losAng.emissions.aggr)
+
+library(ggplot2)
+png("~/Desktop/EPAData/plot6.png")
+ggplot(both.emissions, aes(x=factor(year), y=Emissions, fill=County)) +
+        geom_bar(stat="identity") + 
+        facet_grid(County  ~ ., scales="free") +
+        ylab("total emissions (tons)") + 
+        xlab("year") +
+        ggtitle(expression("Motor vehicle emission variation\nin Baltimore and Los Angeles"))
+dev.off()
