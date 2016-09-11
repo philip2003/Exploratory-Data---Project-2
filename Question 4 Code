@@ -1,1 +1,20 @@
+#Code:
+combustionRelated <- grepl("comb", SCC$SCC.Level.One, ignore.case=TRUE)
+coalRelated <- grepl("coal", SCC$SCC.Level.Four, ignore.case=TRUE) 
+coalCombustion <- (combustionRelated & coalRelated)
+combustionSCC <- SCC[coalCombustion,]$SCC
+combustionNEI <- NEI[NEI$SCC %in% combustionSCC,]
 
+library(ggplot2)
+
+ggp <- ggplot(combustionNEI,aes(factor(year),Emissions/10^5)) +
+        geom_bar(stat="identity",fill="grey",width=0.75) +
+        theme_bw() +  guides(fill=FALSE) +
+        labs(x="year", y=expression("Total PM"[2.5]*" Emission (10^5 Tons)")) + 
+        labs(title=expression("PM"[2.5]*"Coal Combustion Emissions USA from 1999-2008"))
+
+print(ggp)
+png(filename='~/Desktop/EPAData/plot4.png')
+
+#Answer: Emissions from coal combustion related sources decreased from 6 * 10^6 to below 4 * 10^6 from 1999-2008.
+In other words, emissions from coal combustion emissions fromrelated sources have decreased by about 1/3 from 1999-2008.
