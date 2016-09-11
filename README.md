@@ -17,10 +17,6 @@ PM2.5 Emissions Data (`summarySCC_PM25.rds`): This file contains a data frame wi
 ## 4  09001 10100401  PM25-PRI    15.714 POINT 1999
 ## 8  09001 10100404  PM25-PRI   234.178 POINT 1999
 ## 12 09001 10100501  PM25-PRI     0.128 POINT 1999
-
-# You must address the following questions and tasks in your exploratory analysis. 
-# For each question/task you will need to make a single plot. 
-# Unless specified, you can use any plotting system in R to make your plot.
 ## 16 09001 10200401  PM25-PRI     2.036 POINT 1999
 ## 20 09001 10200504  PM25-PRI     0.388 POINT 1999
 ## 24 09001 10200602  PM25-PRI     1.490 POINT 1999
@@ -57,3 +53,7 @@ For each plot you should
 * Create a separate R code file (plot1.R, plot2.R, etc.) that constructs the corresponding plot, i.e. code in plot1.R constructs the plot1.png plot. Your code file should include code for reading the data so that the plot can be fully reproduced. You should also include the code that creates the PNG file. Only include the code for a single plot (i.e. plot1.R should only include code for producing plot1.png)
 * Upload the PNG file on the Assignment submission page
 * Copy and paste the R code from the corresponding R file into the text box at the appropriate point in the peer assessment.
+
+You must address the following questions and tasks in your exploratory analysis. 
+For each question/task you will need to make a single plot. 
+Unless specified, you can use any plotting system in R to make your plot.
