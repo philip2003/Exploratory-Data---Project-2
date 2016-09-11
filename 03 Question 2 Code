@@ -1,1 +1,16 @@
 
+#Code:
+NEI <- readRDS("~/Desktop/EPAData/summarySCC_PM25.rds")
+SCC <- readRDS("~/Desktop/EPAData/Source_Classification_Code.rds")
+
+NEI_sampling <- NEI[sample(nrow(NEI), size=5000, replace=F), ]
+MD <- subset(NEI, fips=='24510')
+
+png(filename='~/Desktop/EPAData/plot2.png')
+barplot(tapply(X=MD$Emissions, INDEX=MD$year, FUN=sum), 
+        main='Total Emission in Baltimore City, MD', 
+        xlab='Year', ylab=expression('PM'[2.5]))
+dev.off()
+
+#Answer: 
+It is clear from the histogram that total emissions from PM2.5 data for Baltimore City have decreased from 1999 to 2008.
