@@ -22,3 +22,5 @@ ggplot(both.emissions, aes(x=factor(year), y=Emissions, fill=County)) +
         xlab("year") +
         ggtitle(expression("Motor vehicle emission variation\nin Baltimore and Los Angeles"))
 dev.off()
+
+#Answer: The analysis shows that emissions in Baltimore City have fallen dramatically whereas emissions in LA not only increased in one year, but have remained high.
